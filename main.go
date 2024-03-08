@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os/exec"
@@ -56,7 +57,20 @@ func parse(branchName string) string {
 	}
 }
 
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
+)
+
+var versionFlag = flag.Bool("version", false, "Display version")
+
 func main() {
+	flag.Parse()
+	if *versionFlag {
+		fmt.Printf("Version %s, commit %s, built at %s\n", version, commit, date)
+		return
+	}
 	branchName := getCurrentBranch()
 	fmt.Println(parse(branchName))
 }
