@@ -1,12 +1,12 @@
-# git-autocommit
+# git-autocommitmsg
 
 Generates a [conventional commit message](https://www.conventionalcommits.org/en/v1.0.0/) based on the current branch name.
 
 
 ## Install
 ```bash
-curl -sSfL https://raw.githubusercontent.com/benjlevesque/git-autocommit/main/godownloader.sh | sh -s -- -b /usr/local/bin
-git config --global alias.autocommit "!git commit -m \"$(git-autocommit)\""
+curl -sSfL https://raw.githubusercontent.com/benjlevesque/git-autocommitmsg/main/godownloader.sh | sh -s -- -b /usr/local/bin
+git config --global alias.autocommit "!git commit -m \"$(git-autocommitmsg)\""
 ```
 
 You can change the installation path by editing `/usr/local/bin` in the above command. Make sure the directory is in your `$PATH`

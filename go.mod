@@ -1,4 +1,4 @@
-module github.com/benjlevesque/git-autocommit
+module github.com/benjlevesque/git-autocommitmsg
 
 go 1.21.6
 
