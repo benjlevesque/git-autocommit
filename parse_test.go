@@ -13,6 +13,11 @@ func TestParse(t *testing.T) {
 		want       string
 	}{
 		{
+			name:       "main",
+			branchName: "main",
+			want:       "main",
+		},
+		{
 			name:       "without domain",
 			branchName: "feat/message",
 			want:       "feat: message",

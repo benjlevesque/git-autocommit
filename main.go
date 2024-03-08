@@ -22,7 +22,7 @@ func getCurrentBranch() string {
 
 }
 
-var commitRegexp = regexp.MustCompile(`((?P<change>\w*)\/)((?P<domain>.*)\/)?(?P<title>.*)`)
+var commitRegexp = regexp.MustCompile(`((?P<change>\w*)\/)?((?P<domain>.*)\/)?(?P<title>.*)`)
 
 func replaceDashes(str string) string {
 	re := regexp.MustCompile(`-{1,}`)
@@ -40,15 +40,16 @@ func parse(branchName string) string {
 	matches := commitRegexp.FindStringSubmatch(branchName)
 	result := make(map[string]string)
 	for i, name := range commitRegexp.SubexpNames() {
-		if i != 0 && name != "" {
+		if i != 0 && name != "" && len(matches) >= i {
 			result[name] = matches[i]
 		}
 	}
 	change := result["change"]
 	domain := replaceDashes(result["domain"])
 	title := replaceDashes(result["title"])
-
-	if domain != "" {
+	if change == "" {
+		return title
+	} else if domain != "" {
 		return fmt.Sprintf("%s(%s): %s", change, domain, title)
 	} else {
 		return fmt.Sprintf("%s: %s", change, title)
