@@ -6,7 +6,7 @@ Generates a [conventional commit message](https://www.conventionalcommits.org/en
 ## Install
 ```bash
 curl -sSfL https://raw.githubusercontent.com/benjlevesque/git-autocommit/main/godownloader.sh | sh -s -- -b /usr/local/bin
-git config --global alias.autocommit "!git-autocommit"
+git config --global alias.autocommit "!git commit -m \"$(git-autocommit)\""
 ```
 
 You can change the installation path by editing `/usr/local/bin` in the above command. Make sure the directory is in your `$PATH`
